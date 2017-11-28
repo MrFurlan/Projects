@@ -1,0 +1,64 @@
+﻿@model WebTeste.Models.Item
+
+@{
+    ViewBag.Title = "Excluir Item";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Excluir Item
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.VendaId)
+                @Html.HiddenFor(model => model.ItemId)
+                @Html.HiddenFor(model => model.ProdutoId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VendaId, "Venda", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("VendaId", null, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.VendaId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ItemId, "Item", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ItemId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.ItemId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProdutoId, "Produto", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProdutoId", null, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.ProdutoId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Quantidade, "Quantidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ValorUnitario, "Valor Unitário", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ValorUnitario, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.ValorUnitario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Remover Item" class="btn btn-danger" />
+                        @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

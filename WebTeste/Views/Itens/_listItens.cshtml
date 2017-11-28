@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebTeste.Models.Item>
+
+@{
+    ViewBag.Title = "Itens adicionados";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Itens da Venda
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                Nota
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Valor Unitário
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venda.NrNota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorUnitario)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section styles{
+    <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+}
+@section scripts {
+    <script src="@Url.Content("~/Scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/Scripts/DataTables/dataTables.bootstrap.js")"></script>
+    <script type="text/javascript">$(document).ready(function () { $('.table').dataTable({ "order": [[1, "asc"]] }); });</script>
+}
